@@ -1,0 +1,92 @@
+# Base settings
+# Usually you won't need to change anything here
+
+site_dir: ../site
+use_directory_urls: false
+# docs_dir is the base folder for all lang specific docs folder
+docs_dir: ../page/docs
+edit_uri: edit/main/page/docs/docs-LANG
+
+# theme: readthedocs
+theme: 
+    name: material
+    language: en
+    logo: https://okfn.org/assets/img/OKF-logo-white-background.png
+    favicon: https://okfn.org/assets/favicon.ico
+    palette:
+      scheme: default
+      primary: teal
+
+plugins:
+    - search:
+        indexing: 'full'
+        lang: en
+
+    # - mkpdfs:
+    #     company: OKFN
+    #     author: Some OKFN member <some@okfn.org>
+    - with-pdf:
+        author: Some OKFN member <some@okfn.org>
+        copyright: OKFN CC BY-SA
+        cover: true
+        back_cover: true
+        cover_title: Cover title
+        cover_subtitle: Cover subtitle
+        cover_logo: https://okfn.org/assets/img/OKF-logo-white-background.png
+        # custom path for cover.html and/or style.css
+        custom_template_path: page/pdf/pdf-template-en
+        toc_title: Table of contents
+        heading_shift: false
+        toc_level: 3
+        ordered_chapter_level: 2
+        #excludes_children:
+        #    - 'release-notes/:upgrading'
+        #    - 'release-notes/:changelog'
+        #
+        #exclude_pages:
+        #    - 'bugs/'
+        #    - 'appendix/contribute/'
+        #convert_iframe:
+        #    - src: IFRAME SRC
+        #      img: POSTER IMAGE URL
+        #      text: ALTERNATE TEXT
+        #    - src: ...
+        #two_columns_level: 3
+        #
+        #render_js: true
+        #headless_chrome_path: headless-chromium
+        #
+        output_path: pdf/doc-en.pdf
+        #enabled_if_env: ENABLE_PDF_EXPORT
+        #
+        #debug_html: true
+        show_anchors: true
+        verbose: false
+
+extra_css:
+    # starts from assets_folder
+    - /css/custom.css
+
+extra_javascript:
+    - https://code.jquery.com/jquery-3.5.1.min.js
+    # starts from assets_folder
+    - /js/app.js
+
+# extra_templates: []
+
+# extra: A set of key-value pairs, where the values can be any valid YAML 
+# construct, that will be passed to the template.
+# TODO do not work on MD files, onlye HTML :(
+# Maybe this plugin https://github.com/rosscdh/mkdocs-markdownextradata-plugin    
+extra:
+    version: 0.1.5
+    okfn_url: https://okfn.org
+    scoda_url: https://schoolofdata.org
+    assets_folder: /assets
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
