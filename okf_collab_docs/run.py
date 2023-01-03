@@ -43,9 +43,6 @@ def build_config(skip_gh_action, env):
     # Detect languages to validate and prepare final custom mkdocs
     languages = validate_langs(custom_config)
 
-    # Define all language final paths
-    update_language_paths(custom_config, env)
-
     # Copy general assets (for all languages).
     src_folder = PATHS['user_assets_folder']
     dst_folder = PATHS['site_assets_folder']
@@ -76,6 +73,9 @@ def build_config(skip_gh_action, env):
         # Prod env can use custom base path for URLs, locally is not required
         pbu = custom_config.get('public_url_base_path', '')
         base_config['extra']['assets_folder'] = pbu + base_config['extra']['assets_folder']
+
+    # Define all language final paths
+    update_language_paths(custom_config, env)
     # ====================
 
     click.echo(f'Languages found: {", ".join(languages)}')
